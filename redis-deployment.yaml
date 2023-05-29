@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-sidi
+  labels:
+    app: redis-sidi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis-sidi
+  template:
+    metadata:
+      labels:
+        app: redis-sidi
+    spec:
+      containers:
+        - name: redis-sidi
+          image: redis
+          ports:
+            - containerPort: 6379

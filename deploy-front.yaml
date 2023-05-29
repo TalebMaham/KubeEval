@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front-site-sidi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: front-site-sidi
+  template:
+    metadata:
+      labels:
+        app: front-site-sidi
+    spec:
+      imagePullSecrets:
+        - name: mysecret
+      containers:
+        - name: front
+          image: cloud.canister.io:5000/luke34/front:front
